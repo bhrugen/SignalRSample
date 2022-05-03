@@ -15,4 +15,8 @@
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="7.0.0-preview.3.22175.1" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="wwwroot\lib\microsoft\signalr\dist\browser\" />
+  </ItemGroup>
+
 </Project>
