@@ -25,5 +25,6 @@ document.getElementById("sendButton").addEventListener("click", function (event)
 
 
 connectionNotification.start().then(function () {
+    connectionNotification.send("LoadMessages")
     document.getElementById("sendButton").disabled = false;
 });
