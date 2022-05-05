@@ -13,6 +13,7 @@ namespace SignalRSample.Hubs
             {
                 notificationCounter++;
                 messages.Add(message);
+                await LoadMessages();
             }
         }
 
