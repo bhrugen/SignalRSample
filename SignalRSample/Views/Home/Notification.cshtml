@@ -1,0 +1,32 @@
+﻿<style>
+    .notification-menu {
+           padding: 10px 65px;
+    margin-top: 2px;
+    cursor: pointer;
+    white-space: nowrap;
+    background-color: white !important;
+    outline-color: black;
+    border-bottom:1px solid #eee;
+    }
+</style> 
+
+ <div class="container">
+        <div class="row pt-3">
+            <div class="col-6">
+                   <input type="text" class="form-control" id="notificationInput" autocomplete="off" />
+
+            </div>
+            <div class="col-3">
+            <input type="button" class="btn btn-primary form-control"  id="sendButton" value="Send Message" />
+
+            </div>
+        </div>
+    </div>
+    <div class="nav-item dropdown">
+
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <span id="notificationBell"> <i class="bi bi-bell"></i><span id="notificationCounter"></span></span>
+          </a>
+          <ul class="dropdown-menu notification-menu" id="messageList"  aria-labelledby="navbarDropdown">
+          </ul>
+        </div>
