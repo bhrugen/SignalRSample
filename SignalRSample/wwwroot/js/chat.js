@@ -12,13 +12,17 @@ connectionChat.on("MessageReceived", function (user, message) {
 document.getElementById("sendMessage").addEventListener("click", function (event) {
     var sender = document.getElementById("senderEmail").value;
     var message = document.getElementById("chatMessage").value;
+    var receiver = document.getElementById("receiverEmail").value;
 
-    //send message to all of the users
-
-
-    connectionChat.send("SendMessageToAll", sender, message).catch(function (err) {
-        return console.error(err.toString());
-    });;
+    if (receiver.length > 0) {
+        connectionChat.send("SendMessageToReceiver", sender, receiver, message);
+    }
+    else {
+        //send message to all of the users
+        connectionChat.send("SendMessageToAll", sender, message).catch(function (err) {
+            return console.error(err.toString());
+        });
+    }
     event.preventDefault();
 })
 
