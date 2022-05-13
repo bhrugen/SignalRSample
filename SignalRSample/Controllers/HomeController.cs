@@ -11,14 +11,17 @@ namespace SignalRSample.Controllers
     {
         private readonly ILogger<HomeController> _logger;
         private readonly IHubContext<DeathlyHallowsHub> _deathlyHub;
+        private readonly IHubContext<OrderHub> _orderHub;
         private readonly ApplicationDbContext _context;
         public HomeController(ILogger<HomeController> logger,
             IHubContext<DeathlyHallowsHub> deathlyHub,
+            IHubContext<OrderHub> orderHub,
             ApplicationDbContext context)
         {
             _logger = logger;
             _deathlyHub = deathlyHub;   
             _context = context;
+            _orderHub = orderHub;
         }
 
         public IActionResult Index()
@@ -90,6 +93,7 @@ namespace SignalRSample.Controllers
 
             _context.Orders.Add(order);
             _context.SaveChanges();
+            await _orderHub.Clients.All.SendAsync("newOrder");
             return RedirectToAction(nameof(Order));
         }
         [ActionName("OrderList")]
