@@ -27,6 +27,11 @@ namespace SignalRSample.Controllers
         public IActionResult Index()
         {
             return View();
+        
+        }
+        public IActionResult Chat()
+        {
+            return View();
         }
         public IActionResult BasicChat()
         {

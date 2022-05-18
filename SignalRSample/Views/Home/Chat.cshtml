@@ -1,35 +1,76 @@
-﻿<div class="container">
-     <div class="row">&nbsp;</div>
+﻿
+<div class="container border m-3 p-4">
         <div class="row">
-             <div class="col-3">Sender</div>
-             <div class="col-4"><input type="text" value="@User.Identity.Name" id="senderEmail" /></div>
-         </div>
-        <div class="row">
-            <div class="col-3">Receiver</div>
-            <div class="col-4"><input type="text" id="receiverEmail" /></div>
+            <div class="col-3">Create Room</div>
+             <div class="col-4"><input type="text" class="form-control" id="createRoomName"></div>
+             <div class="col-3">
+             <input type="button" class="btn btn-primary" onclick="" id="btnCreateRoom" value="Create Room" /></div>
         </div>
-        <div class="row">
-            <div class="col-3">Message</div>
-            <div class="col-4"><input type="text" id="chatMessage" /></div>
+
+        <div class="row pt-3">
+            <div class="col-3">Delete Room</div>
+             <div class="col-4">
+                 <select class="form-select" id="ddlDelRoom" >
+                          
+                </select>               
+
+             </div>
+             <div class="col-3">
+             <input type="button" class="btn btn-danger" onclick="" value="Delete Room" /></div>
         </div>
-        <div class="row">&nbsp;</div>
-        <div class="row">
-            <div class="col-6">
-                <input type="button" id="sendMessage" value="Send Message" />
-            </div>
         </div>
-    <div class="row">
+        
+        <div class="container border m-3 p-4">
+        <div class="row">
+            <div class="col-3">Select Room</div>
+             <div class="col-4">
+                <select class="form-select" id="ddlSelRoom" >
+                          
+                </select>  
+                
+             </div>
+             
+        </div>
+
+        <div class="row pt-3">
+            <div class="col-3">Send Public Message</div>
+             <div class="col-4">
+                 <input type="text" class="form-control" id="txtPublicMessage">
+             </div>
+             <div class="col-3">
+             <input type="button" class="btn btn-info" onclick="" value="Send Public Message" /></div>
+        </div>
+        </div>
+        <div class="container border m-3 p-4">
+        <div class="row">
+            <div class="col-3">Select User</div>
+             <div class="col-4">
+               <select class="form-select" id="ddlSelUser" >
+                          
+                </select>  
+                
+             </div>
+             
+        </div>
+
+        <div class="row pt-3">
+            <div class="col-3">Send Private Message</div>
+             <div class="col-4"><input type="text" class="form-control" id="txtPrivateMessage"></div>
+             <div class="col-3">
+             <input type="button" class="btn btn-secondary" onclick="" id="sendButton" value="Send Private Message" /></div>
+        </div>
+        </div>
+
+        <div class="container border m-3 p-4 bg-light">
+    
+    <div class="row" style="min-height:200px;">
         <div class="col-12">
-            <hr /> 
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-6">
+            Message List: 
             <ul id="messagesList"></ul>
         </div>
     </div>
-
-</div>
+ </div>
+       
 
 <script src="~/js/signalr.js"></script>
 <script src="~/js/chat.js"></script>
