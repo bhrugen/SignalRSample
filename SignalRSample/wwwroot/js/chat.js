@@ -19,6 +19,7 @@ connection.on("ReceiveUserDisconnected", function (userId, userName) {
 
 connection.on("ReceiveAddRoomMessage", function (maxRoom, roomId, roomName, userId, userName) {
     addMessage(`${userName} has created room  ${roomName}`);
+    fillRoomDropDown();
 });
 
 
