@@ -1,0 +1,57 @@
+﻿@model SignalRSample.Models.ViewModel.ChatVM
+<ul class="nav nav-tabs" style="background-color:#e6e9f0"  role="tablist" id="ulroomTabs">
+    @foreach(var item in Model.Rooms){
+
+    <li class="nav-item w-25" role="presentation">
+        <a class="nav-link text-center @( Model.Rooms.First().Id == item.Id ? "active" : "")" id="room@(item.Id)-tab" data-bs-toggle="tab" 
+            href="#room@(item.Id)" role="tab" aria-controls="room@(item.Id)" aria-selected="true">
+            @item.Name <i class="bi bi-trash text-danger deleteRoom" onclick="deleteRoom(@item.Id,'@item.Name')"></i>
+        </a>
+    </li>
+    }
+@if(Model.AllowAddRoom)
+{
+        <li class="nav-item w-25" disabled id="liaddnewRoom" onclick="addnewRoom(@Model.MaxRoomAllowed)" role="presentation">
+            <a class="nav-link text-center @(Model.Rooms.Any() ? "" : "active")" data-bs-toggle="tab" 
+                href="#" role="tab" aria-controls="roomAdd" aria-selected="true">
+                <i class="bi bi-plus-lg bg-white text-black px-2"></i>
+            </a>
+        </li>
+}
+</ul>
+                <div class="tab-content" style="height:400px;background-color:#fff;" id="divRooms">
+                    @foreach(var item in Model.Rooms){
+                        <div class="tab-pane h-100 fade @(Model.Rooms.First().Id == item.Id ? "show active" : "")" id="room@(item.Id)" role="tabpanel" aria-labelledby="room@(item.Id)-tab">
+                            <div class="container  h-100" >
+                                <div class="row h-100 flex-column p-3">                              
+
+                                    <div class="flex-fill border border-dark rounded" style="overflow:hidden;">
+                                        <div class="d-block"  style="overflow-y:auto; max-height: 280px"> 
+                                            <ul class="p-2" style="list-style-type:none;" id="ulmessagesList@(item.Id)">
+
+                                            </ul>
+                                        </div>
+                                    </div>
+
+                                    <div class="flex-column">
+                                        <div class="row py-3">
+                                                <div class="col-auto">
+                                                <label for="inputMessage@(item.Id)" class="col-form-label">Message</label>
+                                                </div>
+                                                <div class="col">
+                                                <input type="text" id="inputMessage@(item.Id)" onkeyup="readypublicMessage(@item.Id)" class="form-control">
+                                                </div>
+                                                <div class="col-auto">
+                                                    <button type="button" disabled 
+                                                    id="btnMessage@(item.Id)"
+                                                    onclick="sendpublicMessage(@item.Id)" 
+                                                    class="btn btn-primary">Send</button>
+                                                </div>
+                                            </div>                                             
+                                    </div>
+              
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </div>

@@ -1,0 +1,90 @@
+﻿@model SignalRSample.Models.ViewModel.ChatVM
+
+<div style="height:450px;">
+     <div class="h-100 row" style="overflow: hidden;">
+            <div class="col-md-4 col-6">
+                <div class="h-100 p-2" style="background-color:#e6e9f0">
+                <div class="h-100 rounded border border-dark" style="overflow: hidden;">
+                    <div  style="overflow-y:auto; max-height:400px">  
+                        <input type="hidden" id="hdchatUserId" value="" />
+
+                        <div class="list-group p-2" id="list-tab" role="tablist">    
+                            
+
+                        @*<input type="hidden" id="hdchatUserId" value="@(Model.Input.Users.Any() ? Model.Input.Users.First().Id : "")" />
+                        @foreach(var item in Model.Input.Users)
+                        {
+                            <a class="list-group-item list-group-item-action @(Model.Input.Users.First().Id == item.Id ? "active" : "")" id="list-@(item.Id)-list" 
+                                            data-bs-toggle="list" href="#list-@(item.Id)" role="tab" onclick="setchatuserId('@item.Id')" aria-controls="list-@(item.Id)">
+                                <div class="row">
+                                    <div class="col"> 
+                                        @item.UserName
+                                    </div>
+                                    <div class="col-auto"> 
+                                        <i class="block-text align-middle bg-success rounded-circle d-none"
+                                            id="spanOnline@(item.Id)" style="margin-left:5px;" title="Online">
+                                            </i>  
+                                    </div>
+                                </div>
+                                                   
+                             </a>
+
+                                            
+                                             
+                        }*@
+                        </div>
+                    </div>
+                </div>
+                </div>
+            </div>
+            <div class="col-md-8 col-6">
+                <div class="rounded h-100" style="background-color:#e6e9f0">
+                    <div class="row h-100 flex-column" style="overflow:hidden;">
+                        <div class="d-flex flex-fill pt-3 px-4">
+                           <div class="d-block border border-dark rounded w-100 h-100" >                           
+                                   <div class="tab-content" id="nav-tabContent" >
+                        
+                                        @*@foreach(var item in Model.Input.Users)
+                                        {
+                                            <div class="tab-pane fade @(Model.Input.Users.First().Id == item.Id ? "show active" : "")" id="list-@(item.Id)" role="tabpanel" aria-labelledby="list-@(item.Id)-list">
+                                            
+                                                <div style="overflow: hidden;"> 
+                                                    <div class="d-block px-2 pb-2"  style="overflow-y:auto; max-height:360px">  
+                                                        <ul style="list-style-type:none;" id="ulmessagesList@(item.Id)">
+                                                             
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                                 
+
+                                            </div>
+                                        }   *@
+
+                        
+                                    </div>  
+                           </div>
+                       </div>
+                       <div class="d-flex flex-column p-4">
+                            <div class="row align-items-center">
+                                    <div class="col-auto">
+                                    <label for="inputMessagePrivate" class="col-form-label">Message</label>
+                                    </div>
+                                    <div class="col">
+                                        <input type="text" id="inputMessagePrivate" onkeyup="readyprivateMessage()" class="form-control">
+                                    </div>
+                                    <div class="col-auto">
+                                        <button type="button" disabled 
+                                        id="btnMessagePrivate"
+                                        onclick="sendprivateMessage()" 
+                                        class="btn btn-primary">Send</button>
+                                    </div>
+
+                                </div>
+                        </div>
+                  
+                    </div>
+                </div>
+            </div>
+        </div>          
+                 
+</div>

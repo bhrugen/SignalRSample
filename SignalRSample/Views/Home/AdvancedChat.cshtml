@@ -1,0 +1,55 @@
+﻿    
+@model SignalRSample.Models.ViewModel.ChatVM
+@using Microsoft.AspNetCore.Identity
+@inject SignInManager<IdentityUser> SignInManager
+
+
+    
+
+<div class="pb-4">
+     <input type="hidden" id="hdUserId" value="@Model.UserId" />
+</div>
+<div class="row">
+    <div class="offset-md-2 col-md-10 col-sm-12 p-2 rounded">
+        @if (SignInManager.IsSignedIn(User))
+        {
+            
+            <!-- RH: this is bootstrap 5 tabbed panel -->
+            <ul class="nav nav-tabs" role="tablist">
+                <li class="nav-item w-50" role="presentation">
+                    <a class="nav-link active text-center" id="public-tab" onclick="setchatboxColor('mainchatTab','black')" data-bs-toggle="tab" 
+                href="#publictabbox" role="tab" aria-controls="public" aria-selected="true">
+                        PUBLIC
+                    </a>
+                </li>
+                <li class="nav-item w-50" role="presentation">
+                    <a class="nav-link text-center" id="private-tab" onclick="setchatboxColor('mainchatTab','teal')" data-bs-toggle="tab" 
+                href="#privatetabbox" role="tab" aria-controls="private" aria-selected="false">
+                       <span id="private-badge" class="badge bg-danger"></span> PRIVATE
+                    </a>
+                </li>         
+            </ul>
+            <div class="tab-content p-3"  style="background-color:black" id="mainchatTab">
+                <div class="tab-pane fade show active" id="publictabbox" role="tabpanel" aria-labelledby="public-tab">
+            
+                    @await Html.PartialAsync("_PublicChat",Model)
+
+                </div>
+                <div class="tab-pane fade"  id="privatetabbox" role="tabpanel" aria-labelledby="private-tab">
+                    @await Html.PartialAsync("_PrivateChat",Model)
+            
+                </div>
+    
+            </div>
+        }
+        else
+        {
+            <div class="p-3" style="background-color: black;"> 
+                @await Html.PartialAsync("_PublicChatlight",Model)
+             </div>
+        }
+    </div>
+</div>
+<script src="~/js/signalr.js"></script>
+<script src="~/js/advanceChatHelper.js"></script>
+<script src="~/js/advanceChat.js"></script>

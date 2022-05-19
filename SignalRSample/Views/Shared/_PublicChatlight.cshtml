@@ -1,0 +1,45 @@
+﻿@model SignalRSample.Models.ViewModel.ChatVM
+
+  <ul class="nav nav-tabs"  style="background-color:#e6e9f0"  role="tablist" id="ulroomTabs">
+        @foreach(var item in Model.Rooms){
+
+        <li class="nav-item  w-25" role="presentation">
+            <a class="nav-link text-center @( Model.Rooms.First().Id == item.Id ? "active" : "")" id="room@(item.Id)-tab" data-bs-toggle="tab" 
+                href="#room@(item.Id)" role="tab" aria-controls="room@(item.Id)" aria-selected="true">
+                @item.Name
+            </a>
+        </li>
+        }
+                    
+    </ul>
+    <div class="tab-content" style="height:470px;background-color:#fff" id="divRooms">
+        @foreach(var item in Model.Rooms){
+            <div class="tab-pane h-100 fade @(Model.Rooms.First().Id == item.Id ? "show active" : "")" id="room@(item.Id)" role="tabpanel" aria-labelledby="room@(item.Id)-tab">
+                <div class="container  h-100" >
+                    <div class="row h-100 flex-column p-3">                              
+
+                        <div class="flex-fill border border-dark rounded" style="overflow:hidden;">
+                            <div class="d-block"  style="overflow-y:auto; max-height: 450px"> 
+                                <ul class="p-2" style="list-style-type:none;" id="ulmessagesList@(item.Id)">
+
+                                </ul>
+                            </div>
+                        </div>
+
+                                    
+                    </div>
+                </div>
+                @*<div class="d-flex p-3 h-100" style="background-color:#fff" >                              
+                   
+                    <div class="flex-fill border border-dark" style="overflow: hidden;">
+                        <div class="d-block"  style="overflow-y:auto; max-height: 450px"> 
+                            <ul class="p-2" style="list-style-type:none;" id="ulmessagesList@(item.Id)">
+
+                            </ul>
+                        </div>
+                    </div>                                       
+              
+                </div>*@
+            </div>
+        }
+    </div>
