@@ -5,8 +5,10 @@ var connection = new signalR.HubConnectionBuilder()
     .build();
 
 
-connection.on("ReceiveUserConnected", function (userId, userName) {
-    addMessage(`${userName} is online`);
+connection.on("ReceiveUserConnected", function (userId, userName, isOldConnection) {
+    if (!isOldConnection) {
+        addMessage(`${userName} is online`);
+    }
 });
 
 
