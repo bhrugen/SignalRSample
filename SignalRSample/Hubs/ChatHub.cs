@@ -56,6 +56,14 @@ namespace SignalRSample.Hubs
             await Clients.All.SendAsync("ReceiveAddRoomMessage", maxRoom, roomId, roomName, UserId, userName);
         }
 
+        public async Task SendDeleteRoomMessage(int deleted, int selected, string roomName)
+        {
+            var UserId = Context.User.FindFirstValue(ClaimTypes.NameIdentifier);
+            var userName = _db.Users.FirstOrDefault(u => u.Id == UserId).UserName;
+
+            await Clients.All.SendAsync("ReceiveDeleteRoomMessage", deleted,selected, roomName,userName);
+        }
+
         //public async Task SendMessageToAll(string user, string message)
         //{
         //    await Clients.All.SendAsync("MessageReceived", user, message);
